@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMS Enterprise — Bavaria · Maserada · Sacile</title>
+  <meta name="description" content="BMS Enterprise: la linea di trasporto persone che collega Bavaria, Maserada e Sacile. Flotta operativa, biglietti, mappa della linea." />
+
+  <!-- Leaflet (mappa) via CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================ HEADER / NAV ============================ -->
+  <header class="topbar" id="top">
+    <div class="topbar__elbow" aria-hidden="true"></div>
+
+    <div class="topbar__brand">
+      <span class="badge badge--accent">47-BMS</span>
+      <a class="wordmark" href="#top">
+        <span class="wordmark__main">BMS Enterprise</span>
+        <span class="wordmark__sub">BAVARIA · MASERADA · SACILE</span>
+      </a>
+    </div>
+
+    <nav class="topnav" aria-label="Navigazione principale">
+      <a href="#mezzi">Mezzi</a>
+      <a href="#mappa">Mappa</a>
+      <a href="#biglietti">Biglietti</a>
+      <button class="btn btn--cta" data-open-tickets>Acquista biglietto</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__rail" aria-hidden="true">
+        <span class="rail-block rail-block--orange"></span>
+        <span class="rail-block rail-block--lilac"></span>
+        <span class="rail-block rail-block--blue"></span>
+        <span class="rail-block rail-block--peach"></span>
+      </div>
+
+      <div class="hero__content">
+        <p class="eyebrow"><span class="dot dot--live"></span> STATUS: OPERATIONAL · STARDATE <span data-stardate>—</span></p>
+        <h1 id="hero-title" class="hero__title">La linea che collega Bavaria, Maserada e Sacile</h1>
+        <p class="hero__lead">Tre comuni, una sola linea, tre mezzi pronti a partire. Trasporto persone alla velocità della curvatura (compatibilmente con il traffico sul Piave).</p>
+        <div class="hero__actions">
+          <button class="btn btn--cta btn--lg" data-open-tickets>Acquista biglietto</button>
+          <a class="btn btn--ghost btn--lg" href="#mezzi">Esplora la flotta</a>
+        </div>
+      </div>
+
+      <aside class="hero__stats" aria-label="Dati linea">
+        <div class="statcell"><span class="statcell__num">3</span><span class="statcell__lbl">Fermate principali</span></div>
+        <div class="statcell"><span class="statcell__num">3</span><span class="statcell__lbl">Mezzi in flotta</span></div>
+        <div class="statcell"><span class="statcell__num">1</span><span class="statcell__lbl">Linea, zero scuse</span></div>
+      </aside>
+    </section>
+
+    <!-- ============================ MEZZI ============================ -->
+    <section class="section" id="mezzi" aria-labelledby="mezzi-title">
+      <div class="section__head">
+        <span class="badge badge--lilac">FLOTTA</span>
+        <h2 id="mezzi-title" class="section__title">I mezzi della linea</h2>
+      </div>
+
+      <div class="fleet">
+        <!-- KANGOO -->
+        <article class="vcard vcard--flagship">
+          <div class="vcard__tag">AMMIRAGLIA</div>
+          <div class="vcard__art">
+            <svg class="vehicle" viewBox="0 0 260 120" role="img" aria-label="Illustrazione stilizzata di un Renault Kangoo Passenger">
+              <g class="vehicle__body">
+                <path d="M14 86 L14 50 Q16 36 34 34 L88 30 Q100 22 122 22 L210 22 Q236 24 240 50 L242 86 Z" />
+                <rect class="vehicle__glass" x="40" y="34" width="44" height="26" rx="3" />
+                <rect class="vehicle__glass" x="92" y="30" width="50" height="30" rx="3" />
+                <rect class="vehicle__glass" x="150" y="30" width="56" height="30" rx="3" />
+              </g>
+              <g class="vehicle__wheels">
+                <circle cx="70" cy="92" r="18" /><circle class="hub" cx="70" cy="92" r="7" />
+                <circle cx="196" cy="92" r="18" /><circle class="hub" cx="196" cy="92" r="7" />
+              </g>
+            </svg>
+          </div>
+          <h3 class="vcard__name">Renault Kangoo Passenger</h3>
+          <p class="vcard__years">2005 – 2008</p>
+          <dl class="specs">
+            <div><dt>Ruolo</dt><dd>Ammiraglia</dd></div>
+            <div><dt>Posti</dt><dd>4 <span class="mock">(+ buona volontà)</span></dd></div>
+            <div><dt>Bagagliaio</dt><dd>Generoso</dd></div>
+            <div><dt>Vel. curvatura</dt><dd class="mock">0.3</dd></div>
+          </dl>
+        </article>
+
+        <!-- CLASSE A -->
+        <article class="vcard">
+          <div class="vcard__tag vcard__tag--lilac">COMFORT</div>
+          <div class="vcard__art">
+            <svg class="vehicle" viewBox="0 0 260 120" role="img" aria-label="Illustrazione stilizzata di una Mercedes Classe A">
+              <g class="vehicle__body">
+                <path d="M16 88 L20 56 Q40 40 70 38 L96 30 Q120 24 150 26 L206 30 Q236 40 242 64 L244 88 Z" />
+                <rect class="vehicle__glass" x="58" y="40" width="44" height="24" rx="3" />
+                <rect class="vehicle__glass" x="110" y="34" width="52" height="30" rx="3" />
+                <path class="vehicle__glass" d="M170 34 L208 38 Q220 44 222 60 L170 60 Z" />
+              </g>
+              <g class="vehicle__wheels">
+                <circle cx="74" cy="92" r="18" /><circle class="hub" cx="74" cy="92" r="7" />
+                <circle cx="194" cy="92" r="18" /><circle class="hub" cx="194" cy="92" r="7" />
+              </g>
+            </svg>
+          </div>
+          <h3 class="vcard__name">Mercedes Classe A</h3>
+          <p class="vcard__years">2010</p>
+          <dl class="specs">
+            <div><dt>Ruolo</dt><dd>Comfort</dd></div>
+            <div><dt>Posti</dt><dd>5</dd></div>
+            <div><dt>Stella</dt><dd>Sul cofano</dd></div>
+            <div><dt>Vel. curvatura</dt><dd class="mock">0.6</dd></div>
+            <div class="specs__wide"><dt>Aria condizionata</dt><dd class="ko">Guasta · aria a finestrino aperto</dd></div>
+          </dl>
+        </article>
+
+        <!-- i20 -->
+        <article class="vcard">
+          <div class="vcard__tag vcard__tag--blue">ULTRA-VELOCE</div>
+          <div class="vcard__art">
+            <svg class="vehicle" viewBox="0 0 260 120" role="img" aria-label="Illustrazione stilizzata di una Hyundai i20">
+              <g class="vehicle__body">
+                <path d="M14 90 L22 62 Q46 46 78 46 L104 32 Q132 26 162 30 L210 38 Q240 48 246 72 L246 90 Z" />
+                <rect class="vehicle__glass" x="66" y="48" width="42" height="22" rx="3" />
+                <rect class="vehicle__glass" x="116" y="36" width="54" height="30" rx="3" />
+                <path class="vehicle__glass" d="M178 38 L214 44 Q226 52 228 66 L178 66 Z" />
+              </g>
+              <g class="vehicle__wheels">
+                <circle cx="76" cy="94" r="18" /><circle class="hub" cx="76" cy="94" r="7" />
+                <circle cx="198" cy="94" r="18" /><circle class="hub" cx="198" cy="94" r="7" />
+              </g>
+            </svg>
+          </div>
+          <h3 class="vcard__name">Hyundai i20</h3>
+          <p class="vcard__years">2021</p>
+          <dl class="specs">
+            <div><dt>Ruolo</dt><dd>Trasporti ultra-veloci</dd></div>
+            <div><dt>Posti</dt><dd>5</dd></div>
+            <div><dt>Anno</dt><dd>Il più recente</dd></div>
+            <div><dt>Vel. curvatura</dt><dd class="mock">0.9</dd></div>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================ MAPPA ============================ -->
+    <section class="section" id="mappa" aria-labelledby="mappa-title">
+      <div class="section__head">
+        <span class="badge badge--blue">TRAGITTO</span>
+        <h2 id="mappa-title" class="section__title">La mappa della linea</h2>
+        <p class="section__note">Le tre fermate principali e i punti di interesse lungo il tragitto. Clicca un marker sulla mappa per i dettagli.</p>
+      </div>
+
+      <div class="mapframe">
+        <div class="mapframe__rail" aria-hidden="true">
+          <span class="badge badge--orange">BMS-LINE</span>
+          <ul class="stoplist" id="stoplist"></ul>
+          <ul class="maplegend">
+            <li class="maplegend__stop">Fermate</li>
+            <li class="maplegend__poi">Punti di interesse</li>
+          </ul>
+        </div>
+        <div id="map" class="map" role="application" aria-label="Mappa interattiva della linea BMS"></div>
+      </div>
+      <p class="map__hint">La mappa usa tile OpenStreetMap e richiede connessione a internet.</p>
+    </section>
+
+    <!-- ============================ PUNTI DI INTERESSE ============================ -->
+    <section class="section" id="poi" aria-labelledby="poi-title">
+      <div class="section__head">
+        <span class="badge badge--peach">TAPPE</span>
+        <h2 id="poi-title" class="section__title">Punti di interesse</h2>
+        <p class="section__note">Le attrazioni (discutibili) lungo la linea BMS.</p>
+      </div>
+      <div class="poigrid" id="poigrid"></div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer" id="contatti">
+    <div class="footer__elbow" aria-hidden="true"></div>
+    <div class="footer__content">
+      <span class="wordmark__main wordmark__main--sm">BMS Enterprise</span>
+      <p class="footer__disc">Azienda fittizia. Sito dimostrativo, nessun servizio di trasporto reale e nessun pagamento effettivo. Bavaria · Maserada · Sacile.</p>
+      <button class="btn btn--cta" data-open-tickets>Acquista biglietto</button>
+    </div>
+  </footer>
+
+  <!-- ============================ MODALE BIGLIETTI ============================ -->
+  <dialog class="ticket" id="ticket" aria-labelledby="ticket-title">
+    <form method="dialog" class="ticket__panel" id="ticket-form">
+      <div class="ticket__bar">
+        <span class="badge badge--peach">BMS · BIGLIETTERIA</span>
+        <button type="button" class="ticket__close" data-close-tickets aria-label="Chiudi">CHIUDI ✕</button>
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="ticket__step" data-step="1">
+        <h2 id="ticket-title" class="ticket__title">Acquista il tuo biglietto</h2>
+        <div class="field-grid">
+          <label class="field">
+            <span>Da</span>
+            <select name="from" id="from" required></select>
+          </label>
+          <label class="field">
+            <span>A</span>
+            <select name="to" id="to" required></select>
+          </label>
+          <label class="field">
+            <span>Data</span>
+            <input type="date" name="date" id="date" required />
+          </label>
+          <label class="field">
+            <span>Passeggeri</span>
+            <input type="number" name="pax" id="pax" min="1" max="5" value="1" required />
+          </label>
+          <label class="field field--wide">
+            <span>Mezzo preferito</span>
+            <select name="vehicle" id="vehicle">
+              <option value="any">Indifferente</option>
+              <option value="kangoo">Renault Kangoo (ammiraglia)</option>
+              <option value="classea">Mercedes Classe A (comfort)</option>
+              <option value="i20">Hyundai i20 (ultra-veloce)</option>
+            </select>
+          </label>
+        </div>
+        <p class="ticket__error" id="ticket-error" role="alert" hidden></p>
+        <div class="ticket__actions">
+          <button type="button" class="btn btn--cta btn--lg" data-go-summary>Continua</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="ticket__step" data-step="2" hidden>
+        <h2 class="ticket__title">Riepilogo</h2>
+        <dl class="summary" id="summary"></dl>
+        <p class="ticket__fineprint">Pagamento simulato. Nessun importo verrà addebitato.</p>
+        <div class="ticket__actions">
+          <button type="button" class="btn btn--ghost" data-back-step>Indietro</button>
+          <button type="button" class="btn btn--cta btn--lg" data-confirm>Paga e conferma</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="ticket__step" data-step="3" hidden>
+        <h2 class="ticket__title">Biglietto confermato</h2>
+        <div class="boardingpass" id="boardingpass"></div>
+        <div class="ticket__actions">
+          <button type="button" class="btn btn--cta" data-close-tickets>Fatto</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="main.js"></script>
+</body>
+</html>
