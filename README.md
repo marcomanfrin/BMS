@@ -1,5 +1,9 @@
 # BMS Enterprise — Landing page
 
+https://emilkowal.ski/skill
+https://www.tasteskill.dev
+https://impeccable.style
+
 Sito statico (landing page) per **BMS Enterprise**, ditta *fittizia* di trasporto
 persone sulla linea **B**avaria · **M**aserada · **S**acile.
 
